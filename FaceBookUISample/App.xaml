@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="FaceBookUISample.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!--<Style x:Key="StProfileImage" TargetType="CachedImage">
+                <Setter Property="HeightRequest"    Value="40"/>
+                <Setter Property="WidthRequest"     Value="40"/>
+                <Setter Property="TranslationY"     Value="90"/>
+                <Setter Property="BackgroundColor"  Value="Transparent"/>
+                <Setter Property="Margin"           Value="0,0,0,20"/>
+            </Style>-->
+
+
+             <Style x:Key="StProfileName"              TargetType="Label">
+                <Setter Property="HorizontalOptions"   Value="CenterAndExpand"/>
+                <Setter Property="FontAttributes"      Value="Bold"/>
+                <Setter Property="FontSize"            Value="20"/>
+                <Setter Property="Margin"              Value="0,80,0,5"/>
+            </Style>
+
+             <Style x:Key="StProfileDesc"                  TargetType="Label">
+                <Setter Property="Margin"                  Value="20,0"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="HorizontalOptions"       Value="CenterAndExpand"/>
+                <Setter Property="TextColor"               Value="#6e747d"/>
+            </Style>
+
+            <Style x:Key="StAndroidLabel"                  TargetType="Label">
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="FontSize"                Value ="Micro"/>
+            </Style>
+             
+             
+            <Style x:Key="StIOSBottons"                 TargetType="StackLayout">
+                <Setter Property="Padding"              Value="20,10,20,10"/>
+                <Setter Property="IsVisible"            Value="{OnPlatform iOS= True, Android=False}"/>
+                <Setter Property="Orientation"          Value="Horizontal"/>
+                <Setter Property="HorizontalOptions"    Value="CenterAndExpand"/>
+                <Setter Property="HeightRequest"        Value="40"/>
+            </Style>
+
+             <Style x:Key="StIOSAddHistoryBtn"         TargetType="Button">
+                <Setter Property="ImageSource"         Value="CameraIcon"/>
+                <Setter Property="FontAttributes"      Value="Bold"/>
+                <Setter Property="FontSize"            Value="Medium"/>
+                <Setter Property="BackgroundColor"     Value="#1777f2"/>
+                <Setter Property="TextColor"           Value="White"/>
+                <Setter Property="WidthRequest"        Value="240"/>
+            </Style>
+
+            <Style x:Key="StIOSSettingBtn"               TargetType="Button">
+                <Setter Property="BackgroundColor"     Value="#ebedf0"/>
+                <Setter Property="Image"               Value="SettingIcon.png"/>
+                <Setter Property="WidthRequest"        Value="50"/> 
+            </Style>
+
+             <Style x:Key="StIOSMoreBtn"               TargetType="Button">
+                <Setter Property="BackgroundColor"     Value="#ebedf0"/>
+                <Setter Property="TextColor"           Value="Black"/>
+                <Setter Property="WidthRequest"        Value="50"/>
+                <Setter Property="FontSize"            Value="Large"/>
+                <Setter Property="FontAttributes"      Value="Bold"/> 
+            </Style>
+
+             <Style x:Key="StPersonalInformationImage" TargetType="Image">
+                <Setter Property="HeightRequest"       Value="20"/>
+                <Setter Property="Margin"              Value="0,10,10,0"/>
+            </Style>
+
+            <Style x:Key="StPersonalInformationDesc"   TargetType="Label">
+                <Setter Property="FontSize"            Value="Small"/>
+                <Setter Property="Margin"              Value="0,10,10,0"/>
+            </Style>
+
+             <Style x:Key="StPhotoRollImage"           TargetType="Image">
+                <Setter Property="Aspect"              Value="Fill"/>
+                <Setter Property="WidthRequest"        Value="120"/>
+                <Setter Property="HeightRequest"       Value="120"/>
+            </Style>
+
+            <Style x:Key="StPhotoRollEditInfo"         TargetType="Label">
+                <Setter Property="Margin"              Value="0,10"/>
+                <Setter Property="FontAttributes"      Value="Bold"/>
+                <Setter Property="BackgroundColor"     Value="#e6f1ff"/>
+                <Setter Property="TextColor"           Value="#1777f2"/>
+            </Style>
+
+            <Style x:Key="StLine"                     TargetType="BoxView">
+                <Setter Property="HeightRequest"       Value="1"/>
+                <Setter Property="Color"               Value="#DED9CF"/>
+                <Setter Property="Margin"              Value="0,15"/>
+            </Style>
+
+            <Style x:Key="StFriendsImage"             TargetType="Image">
+                <Setter Property="Aspect"             Value="Fill"/>
+                <Setter Property="WidthRequest"       Value="85"/>
+                <Setter Property="HeightRequest"      Value="90"/>
+            </Style>
+
+            <Style x:Key="StFriendsDesc"             TargetType="Label">
+                <Setter Property="HorizontalOptions"  Value="CenterAndExpand"/>
+                <Setter Property="FontSize"           Value="Micro"/>
+            </Style>
+
+            <Style x:Key="StCommentActBtn"            TargetType ="Button">
+                <Setter Property="BackgroundColor"    Value="Transparent"/>
+                <Setter Property="TextColor"          Value="Black"/>
+                <Setter Property="FontSize"           Value="Micro"/>
+            </Style>
+
+             <Style x:Key="StFriendLbl"                TargetType="Label">
+                <Setter Property="HorizontalTextAlignment" Value="Start"/>
+                <Setter Property="FontAttributes"          Value="Bold"/> 
+            </Style>
+
+            <Style x:Key="StFriendSearch"            TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="EndAndExpand"/>
+                <Setter Property="TextColor"         Value="#1777f2"/> 
+            </Style>
+
+            <Style x:Key="StFriendQuantity"        TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
+                <Setter Property="Margin"            Value="0,0,0,10"/> 
+            </Style>
+
+            <Style x:Key="StCommentActions"        TargetType="StackLayout">
+                <Setter Property="Orientation"     Value="Horizontal"/>
+                <Setter Property="Margin"          Value="0,6"/>
+                <Setter Property="HorizontalOptions"          Value="Start"/>
+                <Setter Property="VerticalOptions"          Value="CenterAndExpand"/> 
+            </Style>
+
+             <Style x:Key="StCommentMore"        TargetType="Label">
+                <Setter Property="BackgroundColor"     Value="Transparent"/>
+                <Setter Property="FontAttributes"      Value="Bold"/>
+                <Setter Property="FontSize"            Value="Large"/>
+                <Setter Property="TextColor"           Value="Blue"/>
+                <Setter Property="HorizontalOptions"   Value="End"/>
+               <Setter Property="VerticalOptions"      Value="Start"/> 
+            </Style> 
+
+            <Style x:Key="StCommentPicture"        TargetType="Image">
+                <Setter Property="Aspect"             Value="Fill"/>
+                <Setter Property="HeightRequest"      Value="280"/>
+                <Setter Property="HorizontalOptions"   Value="FillAndExpand"/> 
+            </Style> 
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
