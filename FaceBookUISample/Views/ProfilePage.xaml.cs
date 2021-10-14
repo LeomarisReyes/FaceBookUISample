@@ -9,7 +9,8 @@ namespace FaceBookUISample.Views
     {
         public ProfilePage()
         {
-            InitializeComponent(); 
+            InitializeComponent();
+            BindingContext = new ViewModels.ProfileViewModel();
         }
     }
 }

@@ -144,7 +144,7 @@
                <Setter Property="VerticalOptions"      Value="Start"/> 
             </Style> 
 
-            <Style x:Key="StCommentPicture"        TargetType="Image">
+            <Style x:Key="StCommentPicture"        TargetType="Image"> 
                 <Setter Property="Aspect"             Value="Fill"/>
                 <Setter Property="HeightRequest"      Value="280"/>
                 <Setter Property="HorizontalOptions"   Value="FillAndExpand"/> 

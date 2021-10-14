@@ -1,0 +1,41 @@
+﻿<Properties StartupConfiguration="{84337F65-E0FB-4F9B-929E-188A5AFA729B}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="FaceBookUISample/Views/ProfilePage.xaml">
+    <Files>
+      <File FileName="FaceBookUISample/Views/ProfilePage.xaml" Line="174" Column="27" />
+      <File FileName="FaceBookUISample/App.xaml" />
+      <File FileName="FaceBookUISample/ViewModels/ProfileViewModel.cs" />
+      <File FileName="FaceBookUISample/Views/ProfilePage.xaml.cs" />
+      <File FileName="FaceBookUISample.iOS/AppDelegate.cs" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="FaceBookUISample" expanded="True" selected="True">
+            <Node name="FaceBookUISample" expanded="True">
+              <Node name="Dependencies" expanded="True">
+                <Node name="PackageDependencies" expanded="True" />
+                <Node name="SdkDependencies" expanded="True" />
+              </Node>
+              <Node name="ViewModels" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="ProfilePage.xaml" expanded="True" />
+              </Node>
+            </Node>
+            <Node name="FaceBookUISample.Android" expanded="True">
+              <Node name="Resources" expanded="True" />
+            </Node>
+            <Node name="FaceBookUISample.iOS" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.FaceBookUISample.Android PreferredExecutionTarget="Android.lrr_-_pixel_2" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.FaceBookUISample.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.19246DB7-ED17-4769-94AD-22BF5FA8FA24" />
+</Properties>

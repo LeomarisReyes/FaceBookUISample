@@ -4,68 +4,36 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="Leomaris Reyes"
     xmlns:PanCake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-    xmlns:local = "clr-namespace:FaceBookUISample"
-    xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-    xmlns:ffTrans="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
     x:Class="FaceBookUISample.Views.ProfilePage">
 
-     <ContentPage.BindingContext>
-        <local:ViewModels.ProfileViewModel />
-     </ContentPage.BindingContext>
-
-     <ScrollView VerticalScrollBarVisibility="Never" 
-                BackgroundColor="WhiteSmoke">  
-              <Grid RowSpacing="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions> 
+    <!-- Main layout-->
+     <ScrollView VerticalScrollBarVisibility="Never" BackgroundColor="WhiteSmoke">
+         <Grid RowSpacing="0" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto">
             
-            <!--Header Image-->
+            <!--1. Header-->
+
+            <!-- Timeline-->
             <PanCake:PancakeView Grid.Row="0"  CornerRadius="20,20,0,0" IsClippedToBounds="true" HorizontalOptions="FillAndExpand" HeightRequest="{OnPlatform iOS='220', Android='200'}" Margin="20,10,20,0">
                 <Image Source="SunflowersTL.jpg" Aspect="AspectFill"/>
-             </PanCake:PancakeView>
-            
-            <ff:CachedImage Grid.Row="0"  Source="ProfileImage.jpg"  HeightRequest="40" WidthRequest="40" TranslationY="90" BackgroundColor="Transparent" Margin="0,0,0,20">  
-                 <ff:CachedImage.Transformations>
-                        <ffTrans:CircleTransformation />  
-                 </ff:CachedImage.Transformations>
-            </ff:CachedImage>
-
-                        
+            </PanCake:PancakeView>
+            <!-- Profile picture-->
+            <Frame Grid.Row="0" Margin="100,0,100,20" TranslationY="90"  BorderColor="White" VerticalOptions="Start" HorizontalOptions="End" WidthRequest="220" HeightRequest="220" HasShadow="False" CornerRadius="110" Padding="0" IsClippedToBounds="True">
+               <Image Source="ProfileImage.jpg" Aspect="AspectFill"/>
+            </Frame>
+            <!-- Name & Description-->           
             <Label Grid.Row="1" Text="Leomaris Reyes" Style="{StaticResource StProfileName}" />
             <Label Grid.Row="2" Text="Microsoft MVP | Speaker | Software Developer | Vice presidente @Mujeres Tics | https://AskXammy.com"  Style="{StaticResource StProfileDesc}"/>
            
-             <!-- Botones para iOS-->
+             <!--iOS Buttons-->
             <StackLayout Grid.Row="3" Style="{StaticResource StIOSBottons}">
                <Button Text="Agregar Historia" Style="{StaticResource StIOSAddHistoryBtn}" />
                <Button Style="{StaticResource StIOSSettingBtn}"/>
                <Button Text="..." Style="{StaticResource StIOSMoreBtn}"/> 
             </StackLayout>
             
-              <!-- Botones para Android-->
-             <Grid Grid.Row="3" Padding="0,10" IsVisible="{OnPlatform iOS=False, Android=True}"  HorizontalOptions="CenterAndExpand" ColumnSpacing="30">
-                    <Grid.ColumnDefinitions>
-                         <ColumnDefinition Width="50"/>
-                         <ColumnDefinition Width="50"/>
-                         <ColumnDefinition Width="50"/>
-                         <ColumnDefinition Width="50"/>
-                    </Grid.ColumnDefinitions>  
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="50" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                
+              <!--Android Buttons-->
+              <Grid Grid.Row="3" ColumnDefinitions="50,50,50,50" RowDefinitions="50,Auto" Padding="0,10" IsVisible="{OnPlatform iOS=False, Android=True}"  HorizontalOptions="CenterAndExpand" ColumnSpacing="30">
+
                    <Button Grid.Row="0" Grid.Column="0" WidthRequest="50" CornerRadius ="30" BackgroundColor="#ebedf0" Text="+" TextColor="Black" FontSize="Medium" />
                    <Label Grid.Row="1" Grid.Column="0"  Text="Agregar a historia" Style="{StaticResource StAndroidLabel}"/>
                     
@@ -83,25 +51,20 @@
              <StackLayout Grid.Row="4" Padding="20,0,0,30" VerticalOptions="CenterAndExpand" BindableLayout.ItemsSource="{Binding personalInformation}">   
                  <BindableLayout.ItemTemplate>
                     <DataTemplate>
-                       <Grid> 
-                              <Grid.ColumnDefinitions>
-                                      <ColumnDefinition Width="Auto" />
-                                      <ColumnDefinition Width="Auto" />
-                              </Grid.ColumnDefinitions> 
-                              <Image Grid.Row="0" Grid.Column="0" Source="{Binding Picture}"  Style="{StaticResource StPersonalInformationImage}"/>
-                              <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Description}" Style="{StaticResource StPersonalInformationDesc}" />
+                       <Grid ColumnDefinitions="Auto,Auto"> 
+                            <Image Grid.Row="0" Grid.Column="0" Source="{Binding Picture}"  Style="{StaticResource StPersonalInformationImage}"/>
+                            <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Description}" Style="{StaticResource StPersonalInformationDesc}" />
                     </Grid>
                </DataTemplate>
             </BindableLayout.ItemTemplate>  
               </StackLayout> 
             
-            <!-- PhotoRoll --> 
+            <!-- Photo album --> 
             <StackLayout Grid.Row="5" Padding="20,0" HorizontalOptions="FillAndExpand">
                     <CollectionView ItemsSource="{Binding photoRoll}"  
                                     HeightRequest="250">
                             <CollectionView.ItemsLayout>
-                               <GridItemsLayout Orientation="Vertical"
-                                                Span="3" />
+                               <GridItemsLayout Orientation="Vertical" Span="3" />
                             </CollectionView.ItemsLayout>
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
@@ -126,21 +89,21 @@
 
                 <Label Text="1,783 amigos" Style="{StaticResource StFriendQuantity}"/>
 
-                <CollectionView ItemsSource="{Binding friends}"  
+                <CollectionView ItemsSource="{Binding friends}"
+                                VerticalScrollBarVisibility="Never"
                                 HeightRequest="280">
                         <CollectionView.ItemsLayout>
-                           <GridItemsLayout Orientation="Vertical"
-                                            Span="3" />
+                           <GridItemsLayout Orientation="Vertical" Span="3" />
                         </CollectionView.ItemsLayout>
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
-                               <StackLayout WidthRequest="80">
+                               <StackLayout WidthRequest="80" HeightRequest="140">
                                     <PanCake:PancakeView Grid.Row="2" Grid.Column="0" CornerRadius="10" IsClippedToBounds="true" Margin="0,0,10,0" Padding="0,0,0,20" BackgroundColor="{OnPlatform iOS=White, Android=Transparent}" HorizontalOptions="FillAndExpand">
                                        <StackLayout>
                                             <Image Source="{Binding Picture}" Style="{StaticResource StFriendsImage}"/>
                                             <Label Text="{Binding Name}"  Style="{StaticResource StFriendsDesc}"  />
-                                      </StackLayout>
-                                  </PanCake:PancakeView>
+                                       </StackLayout>
+                                    </PanCake:PancakeView>
                                </StackLayout>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
@@ -148,31 +111,14 @@
             </StackLayout>
 
             <!--Add comment-->
-            <Grid Grid.Row="7" Padding="20,15">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />  
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />  
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                
+            <Grid Grid.Row="7" ColumnDefinitions="Auto,*,Auto,*,Auto,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto" Padding="20,15">
                 <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Publicaciones" FontAttributes="Bold" />
                 <Label Grid.Row="0" Grid.Column="6" Text="Filtros" FontAttributes="Bold" TextColor="#385897" HorizontalTextAlignment="End"/>
-                <ff:CachedImage Grid.Row="1" Grid.Column="0" Source="ProfileImage.jpg" HeightRequest="50" WidthRequest="50" HorizontalOptions="StartAndExpand">
-                 <ff:CachedImage.Transformations>
-                        <ffTrans:CircleTransformation />  
-                 </ff:CachedImage.Transformations>
-               </ff:CachedImage>
-                
+
+                <Frame Grid.Row="1" Grid.Column="0" IsClippedToBounds="True" CornerRadius="25" HasShadow="False" WidthRequest="50" HeightRequest="50" Padding="0">
+                    <Image Source="ProfileImage.jpg" Aspect="AspectFill" />
+                </Frame>
+
                 <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Text="¿Que estas pensando?" Margin="10,0,0,0" TextColor="Silver" />
                 <BoxView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="7" Style="{StaticResource StLine}" />
 
@@ -189,64 +135,43 @@
                 <Button Grid.Row="4" Grid.ColumnSpan="7" Grid.Column="0" HorizontalOptions="FillAndExpand" Margin="0,20,0,30" ImageSource="CommentIcon" Text="Administrar publicaciones" BackgroundColor="#ebedf0" TextColor="Black" />
             </Grid>
          
-            <!-- Comments-->
-            <StackLayout Grid.Row="8" BindableLayout.ItemsSource="{Binding principalComents}">   
+            <!-- Comments -->
+              <StackLayout Grid.Row="8" BindableLayout.ItemsSource="{Binding principalComents}">   
                  <BindableLayout.ItemTemplate>
                     <DataTemplate>
                         <StackLayout>
                             <BoxView HorizontalOptions="FillAndExpand" HeightRequest="9" Color="Silver"/>
-                            <Grid RowSpacing="0" ColumnSpacing="0" Padding="20,10">
-                                <Grid.RowDefinitions>
-                                      <RowDefinition Height="Auto" />
-                                      <RowDefinition Height="Auto" />
-                                      <RowDefinition Height="Auto" />
-                                      <RowDefinition Height="Auto" />
-                                      <RowDefinition Height="Auto" />
-                                      <RowDefinition Height="Auto" />
-                                      <RowDefinition Height="Auto" />
-                                      <RowDefinition Height="Auto" /> 
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-
-                            <StackLayout Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" Orientation="Horizontal">
-                                <ff:CachedImage Source="{Binding UserIcon}" HeightRequest="50" WidthRequest="50" HorizontalOptions="Start">
-                                  <ff:CachedImage.Transformations>
-                                        <ffTrans:CircleTransformation />  
-                                 </ff:CachedImage.Transformations>
-                               </ff:CachedImage>   
-
-                                <StackLayout HorizontalOptions="FillAndExpand" Padding="10,0,0,0">
-                                    <Label Text="{Binding Name}" FontSize="Small"/>
-                                    <Label Text="{Binding Date}" TextColor="Silver" FontSize="Small"/>
+                            <Grid RowSpacing="0" ColumnSpacing="0" Padding="20,10" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+                                <!-- Rounded image-->
+                                <Frame Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" HorizontalOptions="Start" IsClippedToBounds="True" CornerRadius="25" HasShadow="False" WidthRequest="50" HeightRequest="50" Padding="0">
+                                   <Image Source="{Binding UserIcon}" Aspect="AspectFill" />
+                                </Frame>
+                                <!-- Basic information-->
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Name}" FontSize="Small" Padding="10,0,0,0"/>
+                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Date}" TextColor="Silver" FontSize="Small" Padding="10,10,0,0"/>
+                                <Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" Text="..."  Style="{StaticResource StCommentMore}"/>
+                                <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding Comment}" Margin="0,10"/>
+                                <!-- Comment image-->
+                                <Image Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"  Source="{Binding PictureComment}" Style="{StaticResource StCommentPicture}"/>
+                                <!-- Reactions-->
+                                <StackLayout Grid.Row="5" Grid.Column="0" Style="{StaticResource StCommentActions}">
+                                    <Label Text="&#128588;" IsVisible="{Binding Like}"  />
+                                    <Label Text="&#x1f60d;" IsVisible="{Binding Love}"  />
+                                    <Label Text="&#128562;" IsVisible="{Binding Funny}" />  
+                                    <Label Grid.Row="5" Grid.Column="1" Text="55" />
                                 </StackLayout>
-                            </StackLayout>
-
-                            <Button Grid.Row="1" Grid.RowSpan="2" Grid.Column="2" Text="..."  Style="{StaticResource StCommentMore}"/>
-                            <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding Comment}" Margin="0,10"/>
-                            <Image Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"  Source="{Binding PictureComment}" Style="{StaticResource StCommentPicture}"/>
+                                <!-- Comment actions & informacion-->
+                               <Label Grid.Row="5" Grid.Column="2" HorizontalOptions="End" Text="5 comentarios" Margin="0,6"/>
+                               <BoxView Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource StLine}" />
                             
-                            <StackLayout Grid.Row="5" Grid.Column="0" Style="{StaticResource StCommentActions}">
-                                <Label Text="&#128588;" IsVisible="{Binding Like}"  />
-                                <Label Text="&#x1f60d;" IsVisible="{Binding Love}"  />
-                                <Label Text="&#128562;" IsVisible="{Binding Funny}" />  
-                                <Label Grid.Row="5" Grid.Column="1" Text="55" />
-                            </StackLayout>
-
-                           <Label Grid.Row="5" Grid.Column="2" HorizontalOptions="End" Text="5 comentarios" Margin="0,6"/>
-                           <BoxView Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource StLine}" />
-                            
-                           <Button Grid.Row="7" Grid.Column="0" ImageSource="LikeIcon" Text="Me gusta" HorizontalOptions="StartAndExpand" Style="{StaticResource StCommentActBtn}" />
-                           <Button Grid.Row="7" Grid.Column="1" ImageSource="CommentPostIcon" Text="Comentar"  HorizontalOptions="CenterAndExpand"  Style="{StaticResource StCommentActBtn}"/>
-                           <Button Grid.Row="7" Grid.Column="2" ImageSource="SharePostIcon" Text="Compartir" HorizontalOptions="EndAndExpand" Style="{StaticResource StCommentActBtn}"/> 
+                               <Button Grid.Row="7" Grid.Column="0" ImageSource="LikeIcon" Text="Me gusta" HorizontalOptions="StartAndExpand" Style="{StaticResource StCommentActBtn}" />
+                               <Button Grid.Row="7" Grid.Column="1" ImageSource="CommentPostIcon" Text="Comentar"  HorizontalOptions="CenterAndExpand"  Style="{StaticResource StCommentActBtn}"/>
+                               <Button Grid.Row="7" Grid.Column="2" ImageSource="SharePostIcon" Text="Compartir" HorizontalOptions="EndAndExpand" Style="{StaticResource StCommentActBtn}"/> 
                         </Grid> 
                    </StackLayout>
                </DataTemplate>
             </BindableLayout.ItemTemplate>  
-            </StackLayout>  
+            </StackLayout>
 
          </Grid>   
  </ScrollView>

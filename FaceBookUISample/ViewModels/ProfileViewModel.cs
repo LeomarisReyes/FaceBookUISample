@@ -86,7 +86,7 @@ namespace FaceBookUISample.ViewModels
             {
                  new PrincipalComents
                 {
-                    UserIcon = "ProfileImage",
+                    UserIcon = "ProfileImage.jpg",
                     PictureComment = "SunflowersTL.jpg",
                     Name="Leomaris Reyes",
                     Date="20 Junio 2019",
@@ -98,7 +98,7 @@ namespace FaceBookUISample.ViewModels
                 },
                   new PrincipalComents
                 {
-                    UserIcon = "ProfileImage",
+                    UserIcon = "ProfileImage.jpg",
                     PictureComment = "Girasol.jpg",
                     Name="Leomaris Reyes",
                     Date="8 Junio 2019",
@@ -110,7 +110,7 @@ namespace FaceBookUISample.ViewModels
                 },
                   new PrincipalComents
                 {
-                    UserIcon = "ProfileImage",
+                    UserIcon = "ProfileImage.jpg",
                     PictureComment = "Agriculture.jpg",
                     Name="Leomaris Reyes",
                     Date="8 Junio 2019",
@@ -122,7 +122,7 @@ namespace FaceBookUISample.ViewModels
                 },
                   new PrincipalComents
                 {
-                    UserIcon = "ProfileImage",
+                    UserIcon = "ProfileImage.jpg",
                     PictureComment = "Water.jpg",
                     Name="Leomaris Reyes",
                     Date="8 Junio 2019",
